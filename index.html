@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 22px;
+      color: #ff4d6d;
+    }
+    p {
+      font-size: 14px;
+      color: #555;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    #yes {
+      background: #ff4d6d;
+      color: white;
+    }
+    #no {
+      background: #ddd;
+      position: absolute;
+    }
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Hey Babe 💻❤️</h1>
+  <p>Will you be my Valentine?</p>
+
+  <button id="yes" onclick="yes()">Yes 😌❤️</button>
+  <button id="no" onmouseover="move()">No 🙄</button>
+
+  <div class="message" id="msg">
+    <p>
+      My 4'11 girl with beautiful eyes  
+      and the cutest smile 😋❤️  
+      <br><br>
+      I’m here with you always my 🧿❤️  
+      big boobie girl 😋❤️  
+      <br><br>
+      — Your lambuu 🐑❤️
+    </p>
+  </div>
+</div>
+
+<script>
+  function move() {
+    const no = document.getElementById("no");
+    no.style.left = Math.random() * 200 + "px";
+    no.style.top = Math.random() * 100 + "px";
+  }
+  function yes() {
+    document.getElementById("msg").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
