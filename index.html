@@ -1,88 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Will You Be My Valentine?</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Poppins', sans-serif;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
-      width: 320px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-    h1 {
-      font-size: 22px;
-      color: #ff4d6d;
-    }
-    p {
-      font-size: 14px;
-      color: #555;
-    }
-    button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px;
-      font-size: 14px;
-      cursor: pointer;
-      margin: 10px;
-    }
-    #yes {
-      background: #ff4d6d;
-      color: white;
-    }
-    #no {
-      background: #ddd;
-      position: absolute;
-    }
-    .message {
-      display: none;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>For Riya ❤️</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  font-family:'Segoe UI', Arial, sans-serif;
+  overflow:hidden;
+}
+
+.card{
+  background:linear-gradient(180deg,#ffffff,#ffe6eb);
+  padding:32px;
+  border-radius:25px;
+  text-align:center;
+  width:330px;
+  box-shadow:0 0 30px rgba(255,77,109,0.4);
+  position:relative;
+}
+
+.name{
+  font-size:13px;
+  color:#ff6f91;
+  letter-spacing:1px;
+  margin-bottom:6px;
+}
+
+h2{
+  color:#ff4d6d;
+  margin-bottom:10px;
+}
+
+p{
+  color:#444;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.buttons{
+  margin-top:20px;
+  position:relative;
+  height:60px;
+}
+
+button{
+  padding:10px 22px;
+  border:none;
+  border-radius:25px;
+  font-size:14px;
+  cursor:pointer;
+}
+
+#yes{
+  background:#ff4d6d;
+  color:white;
+  box-shadow:0 0 15px rgba(255,77,109,0.8);
+}
+
+#no{
+  background:#ddd;
+  position:absolute;
+}
+
+#message{
+  display:none;
+  margin-top:22px;
+  font-size:14px;
+  color:#333;
+}
+
+.hearts{
+  position:fixed;
+  bottom:10px;
+  width:100%;
+  text-align:center;
+  font-size:22px;
+}
+</style>
 </head>
+
 <body>
 
 <div class="card">
-  <h1>Hey Babe 💻❤️</h1>
-  <p>Will you be my Valentine?</p>
+  <div class="name">for Riya Mitra 🧿❤️</div>
 
-  <button id="yes" onclick="yes()">Yes 😌❤️</button>
-  <button id="no" onmouseover="move()">No 🙄</button>
+  <h2>Hey Babe 💻❤️</h2>
 
-  <div class="message" id="msg">
+  <p>
+    As an IT girl, you understand logic…  
+    but my heart only compiles with YOU 🧿❤️  
+    <br><br>
+    Will you be my Valentine?
+  </p>
+
+  <div class="buttons" id="buttons">
+    <button id="yes" onclick="sayYes()">Yes 😌❤️</button>
+    <button id="no" onmouseover="moveNo()">No 🙄</button>
+  </div>
+
+  <div id="message">
     <p>
-      My 4'11 girl with beautiful eyes  
-      and the cutest smile 😋❤️  
+      My 4'11 girl with the most beautiful eyes  
+      and her adorable smile 😌❤️  
       <br><br>
-      I’m here with you always my 🧿❤️  
-      big boobie girl 😋❤️  
+      My big boobie girl 😋❤️  
       <br><br>
-      — Your lambuu 🐑❤️
+      I’m here with you always, my love 🧿❤️  
+      <br><br>
+      You just made my Valentine complete 💘
     </p>
+    <p><strong>— Your lambuu 🐑❤️</strong></p>
   </div>
 </div>
 
+<div class="hearts">
+  ❤️ 💕 💖 💘 💞
+</div>
+
 <script>
-  function move() {
-    const no = document.getElementById("no");
-    no.style.left = Math.random() * 200 + "px";
-    no.style.top = Math.random() * 100 + "px";
-  }
-  function yes() {
-    document.getElementById("msg").style.display = "block";
-  }
+function moveNo(){
+  const noBtn=document.getElementById("no");
+  const x=Math.random()*200-100;
+  const y=Math.random()*40-20;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
+}
+
+function sayYes(){
+  document.getElementById("buttons").style.display="none";
+  document.getElementById("message").style.display="block";
+}
 </script>
 
 </body>
