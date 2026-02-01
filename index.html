@@ -47,7 +47,7 @@ p{
 .buttons{
   margin-top:20px;
   position:relative;
-  height:60px;
+  height:80px;
 }
 
 button{
@@ -67,6 +67,9 @@ button{
 #no{
   background:#ddd;
   position:absolute;
+  left:120px;
+  top:20px;
+  transition: transform 0.25s ease;
 }
 
 #message{
@@ -102,7 +105,7 @@ button{
 
   <div class="buttons" id="buttons">
     <button id="yes" onclick="sayYes()">Yes 😌❤️</button>
-    <button id="no" onmouseover="moveNo()">No 🙄</button>
+    <button id="no">No 🙄</button>
   </div>
 
   <div id="message">
@@ -125,12 +128,27 @@ button{
 </div>
 
 <script>
-function moveNo(){
-  const noBtn=document.getElementById("no");
-  const x=Math.random()*200-100;
-  const y=Math.random()*40-20;
-  noBtn.style.transform=`translate(${x}px,${y}px)`;
+const noBtn = document.getElementById("no");
+const container = document.querySelector(".buttons");
+
+function moveNoSmooth(){
+  const maxX = container.offsetWidth - noBtn.offsetWidth;
+  const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
+
+// Laptop hover
+noBtn.addEventListener("mouseover", moveNoSmooth);
+
+// Mobile touch
+noBtn.addEventListener("touchstart", moveNoSmooth);
+
+// Extra safety (if cursor gets close)
+noBtn.addEventListener("mousemove", moveNoSmooth);
 
 function sayYes(){
   document.getElementById("buttons").style.display="none";
@@ -140,4 +158,3 @@ function sayYes(){
 
 </body>
 </html>
-      
