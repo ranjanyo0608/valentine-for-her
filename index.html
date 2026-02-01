@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>For Riya ❤️</title>
-
 <style>
 body{
   margin:0;
@@ -57,6 +56,7 @@ button{
   font-size:14px;
   cursor:pointer;
   position:absolute;
+  transition: transform 0.3s ease; /* smooth movement */
 }
 
 #yes{
@@ -72,7 +72,6 @@ button{
 #no{
   background:#ddd;
   color:#444;
-  transition: transform 0.05s ease; /* super fast movement */
   left:0;
   top:0;
 }
@@ -96,12 +95,9 @@ button{
 </head>
 
 <body>
-
 <div class="card">
   <div class="name">for Riya Mitra 🧿❤️</div>
-
   <h2>Hey Babe 💻❤️</h2>
-
   <p>
     As an IT girl, you understand logic…  
     but my heart only compiles with YOU 🧿❤️  
@@ -135,25 +131,40 @@ button{
 
 <script>
 const noBtn = document.getElementById("no");
+const buffer = 60; // distance in px to start moving
+const speed = 15;   // how far to move each step
 
-// Function to move No button anywhere on the screen
-function moveNoInsane() {
-  const maxX = window.innerWidth - noBtn.offsetWidth;
-  const maxY = window.innerHeight - noBtn.offsetHeight;
+document.addEventListener("mousemove", function(e){
+  const rect = noBtn.getBoundingClientRect();
+  const noX = rect.left + rect.width/2;
+  const noY = rect.top + rect.height/2;
 
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
+  const dx = e.clientX - noX;
+  const dy = e.clientY - noY;
+  const distance = Math.sqrt(dx*dx + dy*dy);
 
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-}
+  if(distance < buffer){
+    let moveX = (dx / distance) * -speed;
+    let moveY = (dy / distance) * -speed;
 
-// Make No button escape everywhere
-noBtn.addEventListener("mouseover", moveNoInsane);
-noBtn.addEventListener("mousemove", moveNoInsane);
-noBtn.addEventListener("touchstart", moveNoInsane);
-noBtn.addEventListener("touchmove", moveNoInsane);
+    // current position
+    const style = window.getComputedStyle(noBtn);
+    const matrix = new DOMMatrix(style.transform);
+    let currentX = matrix.m41;
+    let currentY = matrix.m42;
 
-// Yes button action
+    let newX = currentX + moveX;
+    let newY = currentY + moveY;
+
+    // keep button inside window
+    newX = Math.min(window.innerWidth - noBtn.offsetWidth - 10, Math.max(0, newX));
+    newY = Math.min(window.innerHeight - noBtn.offsetHeight - 10, Math.max(0, newY));
+
+    noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
+  }
+});
+
+// Yes button
 function sayYes() {
   document.getElementById("buttons").style.display = "none";
   document.getElementById("message").style.display = "block";
